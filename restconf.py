@@ -17,6 +17,15 @@ def load_devices() -> List[dict]:
         return hosts
 
 
+def set_interfaces(host: dict) -> str:
+    response = restconf_helpers.RestconfRequestHelper().put(
+        url=f'https://{host["connection_address"]}/restconf/data/Cisco-IOS-XE-native:native/interface/',
+        username=host['username'],
+        password=host['password'],
+        )
+    return response
+
+
 def init_logger():
     _logger = logging.getLogger('restconf')
     _logger.setLevel(logging.DEBUG)
