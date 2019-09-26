@@ -1,4 +1,90 @@
-<interface xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native"  xmlns:ios="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+<native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native"  xmlns:ios="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+  <version>16.6</version>
+  <boot-start-marker/>
+  <boot-end-marker/>
+  <service>
+  <timestamps>
+  <debug>
+  <datetime>
+  <msec>
+  </msec>
+</datetime>
+</debug>
+<log>
+<datetime>
+  <msec/>
+</datetime>
+</log>
+</timestamps>
+</service>
+<platform>
+<console xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-platform">
+  <output>virtual</output>
+</console>
+</platform>
+<hostname>csr1000vpython09</hostname>
+<enable>
+<secret>
+  <type>5</type>
+  <secret>$1$hMCq$/OIHz6h9IygYsO4XUTBul/</secret>
+</secret>
+</enable>
+<username>
+  <name>python</name>
+  <privilege>15</privilege>
+  <secret>
+    <encryption>5</encryption>
+    <secret>$1$Fv7a$9FLcg7QNfg19ApXN0Ue7t/</secret>
+  </secret>
+</username>
+<ip>
+<domain>
+  <lookup>false</lookup>
+  <name>lab.ins.hsr.ch</name>
+</domain>
+<forward-protocol>
+  <protocol>nd</protocol>
+</forward-protocol>
+<route>
+  <ip-route-interface-forwarding-list>
+    <prefix>0.0.0.0</prefix>
+    <mask>0.0.0.0</mask>
+    <fwd-list>
+      <fwd>10.3.255.1</fwd>
+    </fwd-list>
+  </ip-route-interface-forwarding-list>
+</route>
+<ssh>
+<client>
+<algorithm>
+<encryption>
+  <aes128-ctr/>
+  <aes192-ctr/>
+  <aes256-ctr/>
+</encryption>
+</algorithm>
+</client>
+<server>
+<algorithm>
+<encryption>
+  <aes128-ctr/>
+  <aes192-ctr/>
+  <aes256-ctr/>
+</encryption>
+</algorithm>
+</server>
+<time-out>60</time-out>
+<version>2</version>
+</ssh>
+<http xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-http">
+<authentication>
+  <local/>
+</authentication>
+<server>false</server>
+<secure-server>true</secure-server>
+</http>
+</ip>
+<interface>
   <GigabitEthernet>
     <name>1</name>
     <description>RESTful API Interface</description>
@@ -9,12 +95,6 @@
       <mask>255.255.255.0</mask>
     </primary>
   </address>
-  <ospf xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ospf">
-    <process-id>
-      <id>1</id>
-      <area>0</area>
-    </process-id>
-  </ospf>
 </ip>
 <mop>
   <enabled>false</enabled>
@@ -24,7 +104,8 @@
 </negotiation>
 </GigabitEthernet>
 <Loopback>
-  <name>0</name>
+  <name>1</name>
+  <description>The first loopback</description>
   <ip>
   <address>
   <primary>
@@ -35,7 +116,8 @@
 </ip>
 </Loopback>
 <Loopback>
-  <name>1</name>
+  <name>2</name>
+  <description>The second Loopback</description>
   <ip>
   <address>
   <primary>
@@ -46,53 +128,103 @@
 </ip>
 </Loopback>
 </interface>
-
-
-<interface xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native"  xmlns:ios="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
-  <GigabitEthernet>
-    <name>1</name>
-    <description>RESTful API Interface</description>
-    <ip>
-    <address>
-    <primary>
-      <address>10.3.255.109</address>
-      <mask>255.255.255.0</mask>
-    </primary>
-  </address>
+<control-plane>
+</control-plane>
+<multilink>
+  <bundle-name xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ppp">authenticated</bundle-name>
+</multilink>
+<redundancy>
+</redundancy>
+<spanning-tree>
+<extend xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-spanning-tree">
+  <system-id/>
+</extend>
+</spanning-tree>
+<subscriber>
+  <templating/>
+</subscriber>
+<crypto>
+<pki xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-crypto">
+<certificate>
+  <chain>
+    <name>TP-self-signed-3268526597</name>
+    <certificate>
+      <serial>01</serial>
+      <certtype>self-signed</certtype>
+    </certificate>
+  </chain>
+</certificate>
+<trustpoint>
+  <id>TP-self-signed-3268526597</id>
+  <enrollment>
+    <selfsigned/>
+  </enrollment>
+  <revocation-check>none</revocation-check>
+  <rsakeypair>
+    <key-label>TP-self-signed-3268526597</key-label>
+  </rsakeypair>
+  <subject-name>cn=IOS-Self-Signed-Certificate-3268526597</subject-name>
+</trustpoint>
+</pki>
+</crypto>
+<router>
   <ospf xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ospf">
-    <process-id>
-      <id>1</id>
+    <id>1</id>
+    <network>
+      <ip>9.9.9.9</ip>
+      <mask>0.0.0.0</mask>
       <area>0</area>
-    </process-id>
+    </network>
+    <network>
+      <ip>10.3.255.0</ip>
+      <mask>0.0.0.255</mask>
+      <area>0</area>
+    </network>
   </ospf>
-</ip>
-<mop>
-  <enabled>false</enabled>
-</mop>
-<negotiation xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ethernet">
-  <auto>true</auto>
-</negotiation>
-</GigabitEthernet>
-<Loopback>
-  <name>0</name>
-  <ip>
-  <address>
-  <primary>
-    <address>9.9.9.9</address>
-    <mask>255.255.255.255</mask>
-  </primary>
-</address>
-</ip>
-</Loopback>
-<Loopback>
-  <name>1</name>
-  <ip>
-  <address>
-  <primary>
-    <address>192.168.9.1</address>
-    <mask>255.255.255.0</mask>
-  </primary>
-</address>
-</ip>
-</Loopback>
-</interface>
+</router>
+<virtual-service>
+  <name>csr_mgmt</name>
+  <activate xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-vservice"/>
+</virtual-service>
+<license>
+<udi>
+  <pid>CSR1000V</pid>
+  <sn>9JH2IX5XNVC</sn>
+</udi>
+<accept>
+  <end/>
+  <user/>
+  <agreement/>
+</accept>
+</license>
+<line>
+  <vty>
+    <first>0</first>
+    <last>4</last>
+    <logging>
+    <synchronous>
+    </synchronous>
+  </logging>
+  <login>
+    <local/>
+  </login>
+  <transport>
+  <input>
+    <input>ssh</input>
+  </input>
+  <output>
+    <output>ssh</output>
+  </output>
+  <preferred>
+    <protocol>ssh</protocol>
+  </preferred>
+</transport>
+</vty>
+</line>
+<diagnostic xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-diagnostics">
+<bootup>
+  <level>minimal</level>
+</bootup>
+</diagnostic>
+</native>
+

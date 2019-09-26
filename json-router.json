@@ -1,0 +1,255 @@
+ {
+  "Cisco-IOS-XE-native:native": {
+    "version": "16.6",
+    "boot-start-marker": [null],
+    "boot-end-marker": [null],
+    "service": {
+      "timestamps": {
+        "debug": {
+          "datetime": {
+            "msec": {
+            }
+          }
+        },
+        "log": {
+          "datetime": {
+            "msec": [null]
+          }
+        }
+      }
+    },
+    "platform": {
+      "Cisco-IOS-XE-platform:console": {
+        "output": "virtual"
+      }
+    },
+    "hostname": "csr1000vpython09",
+    "enable": {
+      "secret": {
+        "type": "5",
+        "secret": "$1$hMCq$/OIHz6h9IygYsO4XUTBul/"
+      }
+    },
+    "username": [
+      {
+        "name": "python",
+        "privilege": 15,
+        "secret": {
+          "encryption": "5",
+          "secret": "$1$Fv7a$9FLcg7QNfg19ApXN0Ue7t/"
+        }
+      }
+    ],
+    "ip": {
+      "domain": {
+        "lookup": false,
+        "name": "lab.ins.hsr.ch"
+      },
+      "forward-protocol": {
+        "protocol": "nd"
+      },
+      "route": {
+        "ip-route-interface-forwarding-list": [
+          {
+            "prefix": "0.0.0.0",
+            "mask": "0.0.0.0",
+            "fwd-list": [
+              {
+                "fwd": "10.3.255.1"
+              }
+            ]
+          }
+        ]
+      },
+      "ssh": {
+        "client": {
+          "algorithm": {
+            "encryption": {
+              "aes128-ctr": [null],
+              "aes192-ctr": [null],
+              "aes256-ctr": [null]
+            }
+          }
+        },
+        "server": {
+          "algorithm": {
+            "encryption": {
+              "aes128-ctr": [null],
+              "aes192-ctr": [null],
+              "aes256-ctr": [null]
+            }
+          }
+        },
+        "time-out": 60,
+        "version": 2
+      },
+      "Cisco-IOS-XE-http:http": {
+        "authentication": {
+          "local": [null]
+        },
+        "server": false,
+        "secure-server": true
+      }
+    },
+    "interface": {
+      "GigabitEthernet": [
+        {
+          "name": "1",
+          "description": "RESTful API Interface",
+          "ip": {
+            "address": {
+              "primary": {
+                "address": "10.3.255.109",
+                "mask": "255.255.255.0"
+              }
+            }
+          },
+          "mop": {
+            "enabled": false
+          },
+          "Cisco-IOS-XE-ethernet:negotiation": {
+            "auto": true
+          }
+        }
+      ],
+      "Loopback": [
+        {
+          "name": 1,
+          "description": "The first loopback",
+          "ip": {
+            "address": {
+              "primary": {
+                "address": "9.9.9.9",
+                "mask": "255.255.255.255"
+              }
+            }
+          }
+        },
+        {
+          "name": 2,
+          "description": "The second Loopback",
+          "ip": {
+            "address": {
+              "primary": {
+                "address": "192.168.9.1",
+                "mask": "255.255.255.0"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "control-plane": {
+    },
+    "multilink": {
+      "Cisco-IOS-XE-ppp:bundle-name": "authenticated"
+    },
+    "redundancy": {
+    },
+    "spanning-tree": {
+      "Cisco-IOS-XE-spanning-tree:extend": {
+        "system-id": [null]
+      }
+    },
+    "subscriber": {
+      "templating": [null]
+    },
+    "crypto": {
+      "Cisco-IOS-XE-crypto:pki": {
+        "certificate": {
+          "chain": [
+            {
+              "name": "TP-self-signed-3268526597",
+              "certificate": [
+                {
+                  "serial": "01",
+                  "certtype": "self-signed"
+                }
+              ]
+            }
+          ]
+        },
+        "trustpoint": [
+          {
+            "id": "TP-self-signed-3268526597",
+            "enrollment": {
+              "selfsigned": [null]
+            },
+            "revocation-check": "none",
+            "rsakeypair": {
+              "key-label": "TP-self-signed-3268526597"
+            },
+            "subject-name": "cn=IOS-Self-Signed-Certificate-3268526597"
+          }
+        ]
+      }
+    },
+    "router": {
+      "Cisco-IOS-XE-ospf:ospf": [
+        {
+          "id": 1,
+          "network": [
+            {
+              "ip": "9.9.9.9",
+              "mask": "0.0.0.0",
+              "area": 0
+            },
+            {
+              "ip": "10.3.255.0",
+              "mask": "0.0.0.255",
+              "area": 0
+            }
+          ]
+        }
+      ]
+    },
+    "virtual-service": [
+      {
+        "name": "csr_mgmt",
+        "Cisco-IOS-XE-vservice:activate": [null]
+      }
+    ],
+    "license": {
+      "udi": {
+        "pid": "CSR1000V",
+        "sn": "9JH2IX5XNVC"
+      },
+      "accept": {
+        "end": [null],
+        "user": [null],
+        "agreement": [null]
+      }
+    },
+    "line": {
+      "vty": [
+        {
+          "first": 0,
+          "last": 4,
+          "logging": {
+            "synchronous": {
+            }
+          },
+          "login": {
+            "local": [null]
+          },
+          "transport": {
+            "input": {
+              "input": ["ssh"]
+            },
+            "output": {
+              "output": ["ssh"]
+            },
+            "preferred": {
+              "protocol": "ssh"
+            }
+          }
+        }
+      ]
+    },
+    "Cisco-IOS-XE-diagnostics:diagnostic": {
+      "bootup": {
+        "level": "minimal"
+      }
+    }
+  }
+}
