@@ -5,29 +5,30 @@ The task is specified in a separate document.
 
 ## Konfiguration
 Um den Router zu konfigurieren werden folgende XML-Conf-Files mittels Restconf PUT-Operation geladen.
-- Ospf Konfiguration
+- OSPF Konfiguration
 - BGP Konfiguration
 
 
 ## Device Config
-interface loopback 0
+interface Loopback1
+    description The first loopback
     ip address 9.9.9.9 255.255.255.255
-    
-interface loopback 1
+
+interface Loopback2
+    description The second Loopback
     ip address 192.168.9.1 255.255.255.0
+
+router ospf 1
+    router-id 9.9.9.9 
+    network 9.9.9.9 0.0.0.0 area 0
+    network 10.3.255.0 0.0.0.255 area 0
     
 router bgp 9
-    neighbor 10.3.255.120 remote-as 20  
-    network 192.168.9.0 mask 255.255.255.0
-    
-router ospf 1
-    router-id 9.9.9.9 <br>
-    network 10.3.255.0 0.0.0.255 area 0  
-    network 192.168.9.0 0.0.0.255 area 0
-
-int GigabitEthernet1
-    ip ospf 1 area 0
-    
+    bgp log-neighbor-changes
+    network 192.168.9.0
+    neighbor 20.20.20.20 remote-as 20
+    neighbor 20.20.20.20 ebgp-multihop 2
+    neighbor 20.20.20.20 update-source Loopback1
 
 ## Device Infos
 Die Device Informationen werden in device_infos.yaml festgelegt.
