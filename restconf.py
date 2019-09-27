@@ -3,6 +3,7 @@ from typing import List
 
 import requests
 import yaml
+from jinja2 import FileSystemLoader, Environment
 
 import restconf_helpers
 
@@ -17,11 +18,12 @@ def load_devices() -> List[dict]:
         return hosts
 
 
-def set_interfaces(host: dict) -> str:
+def put_configuration(host: dict, config: str) -> str:
     response = restconf_helpers.RestconfRequestHelper().put(
         url=f'https://{host["connection_address"]}/restconf/data/Cisco-IOS-XE-native:native/interface/',
         username=host['username'],
         password=host['password'],
+        config=config
         )
     return response
 
@@ -37,6 +39,13 @@ def init_logger():
 
 def main():
     devices = load_devices()
+    for device in devices:
+        env = Environment(loader=FileSystemLoader('./'), trim_blocks=True, lstrip_blocks=True)
+        template = env.get_template('config_template.xml')
+        config = template.render(device)
+        print(config)
+        #response = put_configuration(host=device, config=config)
+        #print(response)
 
 
 if __name__ == '__main__':
