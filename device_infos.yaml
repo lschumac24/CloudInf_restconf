@@ -1,3 +1,28 @@
 - username: python
   password: cisco
   connection_address: 10.3.255.109
+  loopbacks:
+    - loopback:
+        description: 'The first loopback'
+        ip_address: 9.9.9.9
+        mask: 255.255.255.255
+    - loopback:
+        description: 'The first loopback'
+          ip_address: 192.168.9.1
+          mask: 255.255.255.0
+  ospf:
+    router_id: 9.9.9.9
+    networks:
+      - network:
+          ip_address: 9.9.9.9
+          mask: 0.0.0.0
+          area: 0
+      - network:
+          ip_address: 10.3.255.0
+          mask: 0.0.0.255
+          area: 0
+  bgp:
+    network: 192.168.9.0
+    neighbor: 20.20.20.20
+    remote-as: 20
+    ebgp-multihop: 2
