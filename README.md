@@ -2,7 +2,7 @@
 
 ## Vorgehen
 Device_infos.yaml wird als dictionary eingelesen. Damit wir mit jinja2 und dem config_template.xml
-das XML Config File erstellt. Dieses wird dann mittels restconf PUT Operation auf den Router geladen.
+die XML Config erstellt. Die XML Config wird dann mittels restconf PUT Operation auf den Router geladen.
 
 
 ## Device Config
