@@ -2,32 +2,30 @@
   password: cisco
   connection_address: 10.3.255.109
   loopbacks:
-    - loopback:
-        description: 'The first loopback'
-        ip_address: 9.9.9.9
-        mask: 255.255.255.255
-    - loopback:
-        description: 'The second loopback'
-          ip_address: 192.168.9.1
-          mask: 255.255.255.0
+    - name: 1
+      description: 'The first loopback'
+      ip_address: 9.9.9.9
+      mask: 255.255.255.255
+    - name: 2
+      description: 'The second loopback'
+      ip_address: 192.168.9.1
+      mask: 255.255.255.0
   ospf:
     router_id: 9.9.9.9
     networks:
-      - network:
-          ip_address: 9.9.9.9
-          mask: 0.0.0.0
-          area: 0
-      - network:
-          ip_address: 10.3.255.0
-          mask: 0.0.0.255
-          area: 0
+      - ip_address: 9.9.9.9
+        mask: 0.0.0.0
+        area: 0
+      - ip_address: 10.3.255.0
+        mask: 0.0.0.255
+        area: 0
   bgp:
+    id: 20
     network:
       number: 192.168.9.0
-      mask:
+      mask: 255.255.255.0
     neighbors:
-      neighbor:
-        id: 20.20.20.20
+      - id: 20.20.20.20
         remote-as: 20
         ebgp-multihop:
           max-hop: 2
