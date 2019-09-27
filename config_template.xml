@@ -163,18 +163,18 @@
       <bgp>
         <log-neighbor-changes/>
       </bgp>
-      {% for neighbor in neighbors %}
+      {% for neighbor in bgp.neighbors %}
       <neighbor>
         <id>{{neighbor.id}}</id>
-        <remote-as>{{neighbor.remote-as}}</remote-as>
-        {% if ebgp-multihop %}
+        <remote-as>{{neighbor.remote_as}}</remote-as>
+        {% if neighbor.ebgp_multihop is defined%}
         <ebgp-multihop>
-          <max-hop>{{neighbor.ebgp-multihop.max-hop}}</max-hop>
+          <max-hop>{{neighbor.ebgp_multihop.max_hop}}</max-hop>
         </ebgp-multihop>
         {% endif %}
         <update-source>
-          {% if neighbor.update-source.loopback %}
-          <Loopback>{{neighbor.update-source.loopback}}</Loopback>
+          {% if neighbor.update_source.loopback is defined%}
+          <Loopback>{{neighbor.update_source.loopback}}</Loopback>
           {% endif %}
         </update-source>
       </neighbor>
@@ -187,9 +187,9 @@
       <id>{{ospf.router_id}}</id>
       {% for network in ospf.networks %}
       <network>
-        <ip>network.ip_address</ip>
-        <mask>network.mask</mask>
-        <area>network.area</area>
+        <ip>{{network.ip_address}}</ip>
+        <mask>{{network.mask}}</mask>
+        <area>{{network.area}}</area>
       </network>
       {% endfor %}
     </ospf>

@@ -25,8 +25,9 @@
       number: 192.168.9.0
     neighbors:
       - id: 20.20.20.20
-        remote-as: 20
-        ebgp-multihop:
-          max-hop: 2
-        update-source:
+        remote_as: 20
+        ebgp_multihop:
+          max_hop: 2
+        update_source:
           loopback: 1
+
