@@ -20,7 +20,7 @@ def load_devices() -> List[dict]:
 
 def put_configuration(host: dict, config: str) -> str:
     response = restconf_helpers.RestconfRequestHelper().put(
-        url=f'https://{host["connection_address"]}/restconf/data/Cisco-IOS-XE-native:native/interface/',
+        url=f'https://{host["connection_address"]}/restconf/data/Cisco-IOS-XE-native:native/',
         username=host['username'],
         password=host['password'],
         config=config
@@ -43,9 +43,8 @@ def main():
         env = Environment(loader=FileSystemLoader('./'), trim_blocks=True, lstrip_blocks=True)
         template = env.get_template('config_template.xml')
         config = template.render(device)
-        print(config)
-        #response = put_configuration(host=device, config=config)
-        #print(response)
+        response = put_configuration(host=device, config=config)
+        print(response)
 
 
 if __name__ == '__main__':
