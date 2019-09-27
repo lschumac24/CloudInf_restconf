@@ -1,0 +1,52 @@
+grouping interface {
+    leaf-list loopback {
+        leaf description {
+            type string;
+        }
+        leaf address {
+            type inet:ip-address;
+        }
+        leaf mask {
+            type inet:ip-address;
+        }
+    }
+}
+
+grouping ospf {
+    leaf-list network {
+        leaf ip {
+            type inet:ip-address;
+        }
+        leaf mask {
+            type inet:ip-address;
+        }
+        leaf area {
+            type uint-16;
+        }
+    }
+}
+
+grouping bgp {
+    leaf network {
+        type inet:ip-address;
+    }
+    leaf-list neighbors {
+        leaf address {
+            type inet:ip-address;
+        }
+        leaf remote-as {
+            type uint-16;
+        }
+        leaf ebgp-multihop {
+            type uint-16;
+        }
+    }
+}
+
+
+
+container configuration {
+    uses interface;
+    uses ospf;
+    uses bgp;
+}
