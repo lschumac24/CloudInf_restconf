@@ -181,7 +181,6 @@
       {% endfor %}
       <network>
         <number>{{bgp.network.number}}</number>
-        <mask>{{bgp.network.mask}}</mask>
       </network>
     </bgp>
     <ospf xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ospf">
