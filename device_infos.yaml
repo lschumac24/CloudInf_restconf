@@ -22,7 +22,14 @@
           mask: 0.0.0.255
           area: 0
   bgp:
-    network: 192.168.9.0
-    neighbor: 20.20.20.20
-    remote-as: 20
-    ebgp-multihop: 2
+    network:
+      number: 192.168.9.0
+      mask:
+    neighbors:
+      neighbor:
+        id: 20.20.20.20
+        remote-as: 20
+        ebgp-multihop:
+          max-hop: 2
+        update-source:
+          loopback: 1
