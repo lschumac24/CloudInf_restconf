@@ -1,12 +1,8 @@
 # CloudInf Restconf Lab
-This Python script can be extended during the CloudInf Restconf Lab. 
-It shows you how to do a basic Restconf request.
-The task is specified in a separate document.
 
-## Konfiguration
-Um den Router zu konfigurieren werden folgende XML-Conf-Files mittels Restconf PUT-Operation geladen.
-- OSPF Konfiguration
-- BGP Konfiguration
+## Vorgehen
+Device_infos.yaml wird als dictionary eingelesen. Damit wir mit jinja2 und dem config_template.xml
+das XML Config File erstellt. Dieses wird dann mittels restconf PUT Operation auf den Router geladen.
 
 
 ## Device Config
@@ -29,9 +25,6 @@ router bgp 9
     neighbor 20.20.20.20 remote-as 20
     neighbor 20.20.20.20 ebgp-multihop 2
     neighbor 20.20.20.20 update-source Loopback1
-
-## Device Infos
-Die Device Informationen werden in device_infos.yaml festgelegt.
 
 ## Usage
 Start the program:
