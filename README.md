@@ -49,6 +49,9 @@ Nachfolgend sind die Cisco CLI Befehle aufgeführt, welche für das Lösen diese
     *   neighbor 20.20.20.20 ebgp-multihop 2
     *   neighbor 20.20.20.20 update-source Loopback1
 
+##restconf_helpers.py
+In dieser Datei ist die PUT-Implementation für RESTCONF definiert, welche für die Konfigänderung des Routers benötigt wird.
+
 ## Benutzung
 Zum Starten des Programms kann nachfolgende Zeile eingegeben werden:
 `python restconf.py`
