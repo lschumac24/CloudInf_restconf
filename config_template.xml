@@ -22,7 +22,7 @@
       <output>virtual</output>
     </console>
   </platform>
-  <hostname>csr1000vpython09</hostname>
+  <hostname>{{hostname}}</hostname>
   <enable>
     <secret>
       <type>5</type>
@@ -86,13 +86,13 @@
   </ip>
   <interface>
     <GigabitEthernet>
-      <name>1</name>
-      <description>RESTful API Interface</description>
+      <name>{{restconf_interface.port_number}}</name>
+      <description>{{restconf_interface.description}}</description>
       <ip>
         <address>
           <primary>
-            <address>10.3.255.109</address>
-            <mask>255.255.255.0</mask>
+            <address>{{restconf_interface.ip_address}}</address>
+            <mask>{{restconf_interface.mask}}</mask>
           </primary>
         </address>
       </ip>

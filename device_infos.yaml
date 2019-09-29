@@ -1,6 +1,12 @@
 - username: python
   password: cisco
   connection_address: 10.3.255.109
+  hostname: awesomeRouter
+  restconf_interface:
+    port_number: 1
+    description: 'RESTful API Interface 2'
+    ip_address: 10.3.255.109
+    mask: 255.255.255.0
   loopbacks:
     - name: 1
       description: 'The first loopback'
