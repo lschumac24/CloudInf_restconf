@@ -4,7 +4,7 @@
   hostname: awesomeRouter
   restconf_interface:
     port_number: 1
-    description: 'RESTful API Interface 2'
+    description: 'RESTful API Interface'
     ip_address: 10.3.255.109
     mask: 255.255.255.0
   loopbacks:
