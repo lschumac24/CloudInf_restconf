@@ -179,9 +179,11 @@
         </update-source>
       </neighbor>
       {% endfor %}
+      {% for network in bgp.networks %}
       <network>
-        <number>{{bgp.network.number}}</number>
+        <number>{{network.number}}</number>
       </network>
+      {% endfor %}
     </bgp>
     <ospf xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ospf">
         <id>{{ospf.id}}</id>

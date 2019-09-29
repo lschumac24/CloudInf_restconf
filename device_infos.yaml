@@ -28,8 +28,8 @@
         area: 0
   bgp:
     id: 9
-    network:
-      number: 192.168.9.0
+    networks:
+      - number: 192.168.9.0
     neighbors:
       - id: 20.20.20.20
         remote_as: 20
