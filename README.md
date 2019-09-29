@@ -1,19 +1,30 @@
-# CloudInf Restconf Lab
+# CloudInf Restconf Lab 02
 
 ## Vorgehen
 Device_infos.yaml wird als dictionary eingelesen. Damit wir mit jinja2 und dem config_template.xml
 die XML Config erstellt. Die XML Config wird dann mittels restconf PUT Operation auf den Router geladen.
 
+
 ##device_infos.yaml
-In der Datei device_infos.yaml werden alle Konfigurationsangaben getätigt. Folgende Angaben sind möglich:
-*   hostname
-*   Restconf-Gigabit-Interface
-*   mehrere Loopback-Adressen mithilfe einer Liste
-*   OSPF mit mehreren Netzen (Liste) 
-*   BGP mit mehreren Neighbours und Netzen (Listen)
+In der Datei device_infos.yaml werden alle Konfigurationsangaben getätigt. 
+Der Benutzer kann diese Datei je nach Wunsch verändern.
+Folgende Konfigurationsänderungen sind möglich:
+*   hostname ändern
+*   Restconf-Gigabit-Interface definieren
+*   mehrere Loopback-Adressen erstellen
+*   OSPF mit mehreren Netzen erstellen
+*   BGP mit mehreren Neighbours und beliebig vielen Netzen erstellen
 
 
-## Device Config
+##config_template.xml
+Dies ist das Template, aus dem das xml generiert wird, welches zum Router geschickt wird. 
+Es wurde Jinja2 als Template-Engine genommen, um Logic und Variablen im xml zu verwenden.
+Für das Erstellen von mehreren Loopback-Adressen, Netzwerke und Neighbours für BGP und OSPF wurden mithilfe von Listen realisiert.
+
+
+## Device Config (Cisco CLI Befehle)
+Nachfolgend sind die Cisco CLI Befehle aufgeführt, welche für das Lösen dieser Aufgabe verwendet wurden.
+
 * interface GigabitEthernet1
     *   description RESTful API Interface
     *   ip address 10.3.255.109 255.255.255.0
@@ -38,6 +49,6 @@ In der Datei device_infos.yaml werden alle Konfigurationsangaben getätigt. Folg
     *   neighbor 20.20.20.20 ebgp-multihop 2
     *   neighbor 20.20.20.20 update-source Loopback1
 
-## Usage
-Start the program:
+## Benutzung
+Zum Starten des Programms kann nachfolgende Zeile eingegeben werden:
 `python restconf.py`
